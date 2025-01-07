@@ -10,16 +10,11 @@ Dự án này yêu cầu tạo một ứng dụng Laravel để xuất file PDF 
 
 ## **Yêu cầu dự án**
 
-### 1. **Quản lý mã nguồn**
 - Mỗi thành viên cần:
   - Tạo **nhánh riêng** để phát triển.
   - Commit các thay đổi lên nhánh của mình một cách thường xuyên.
   - Gửi **Pull Request (PR)** để merge nhánh của mình vào nhánh chính (main/master) để review.
 - Commit cuối cùng của mỗi thành viên phải chứa từ khóa **"Finished"** trong thông điệp commit.
-
-### 2. **Hướng dẫn triển khai**
-- Bao gồm các thông tin cấu hình và biến môi trường cần thiết trong file `README.md`.
-- Hướng dẫn cách thiết lập dự án trên môi trường cục bộ và chạy ứng dụng.
 
 ---
 
