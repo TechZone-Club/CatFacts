@@ -56,3 +56,22 @@ Dự án này yêu cầu tạo một ứng dụng Laravel để xuất file PDF 
 ## **Ghi chú bổ sung**
 - Để tạo file PDF, bạn có thể lựa chọn: [Dompdf](https://github.com/dompdf/dompdf)
 - Tuân thủ các thực hành tốt nhất trong viết mã và tài liệu.
+
+## Thang Điểm Chấm Dự Án (Tổng: 10 điểm)
+
+### 1. Hoàn Thành Chức Năng Frontend (2 điểm)
+- **1 điểm**: Hiển thị giao diện đơn giản với Blade.
+- **1 điểm**: Gửi yêu cầu từ frontend đến backend.
+
+### 2. Hoàn Thành Chức Năng Backend Cơ Bản (3 điểm)
+- **1.5 điểm**: Tích hợp API CatFact Ninja để lấy dữ liệu.
+- **1.5 điểm**: Tạo file PDF chứa các sự thật thú vị.
+
+### 3. Mục Tiêu Nâng Cao (3 điểm)
+- **1 điểm**: Lưu trữ file PDF vào backend.
+- **1 điểm**: Hiển thị danh sách file PDF đã lưu.
+- **1 điểm**: Cho phép tải xuống file từ danh sách.
+
+### 4. Quy Trình Làm Việc Nhóm và Git (2 điểm)
+- **1 điểm**: Sử dụng nhánh riêng, commit thường xuyên.
+- **1 điểm**: Gửi PR đúng quy trình, commit cuối có từ khóa "Finished".
