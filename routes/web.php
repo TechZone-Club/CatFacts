@@ -14,17 +14,15 @@ use App\Http\Controllers\CatFactController;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+
 
 
 
 Route::get('/', function () {
     return view('catfacts');
-});
+})->name('catfacts');
 
 Route::post('/generate-pdf', [CatFactController::class, 'generatePDF'])->name('generate.pdf');
-Route::get('/pdfs', [CatFactController::class, 'listPDFs'])->name('list.pdfs');
+
 Route::delete('/pdfs/{file}', [CatFactController::class, 'deletePDF'])->name('delete.pdf');
 

@@ -41,17 +41,10 @@ class CatFactController extends Controller
         file_put_contents($filePath, $dompdf->output());
 
         // Lấy danh sách file PDF hiện có trong thư mục public
-        $files = Storage::files('public');
-        $pdfFiles = array_filter($files, function ($file) {
-            return str_ends_with($file, '.pdf');
-        });
-
-        $pdfFiles = array_map(function ($file) {
-            return basename($file);
-        }, $pdfFiles);
+       
 
         // Trả về view với danh sách file PDF
-        return view('catfacts', compact('pdfFiles'));
+        return redirect()->route('catfacts');
     }
     public function deletePDF($file)
 {
@@ -64,7 +57,16 @@ class CatFactController extends Controller
 
     return back()->with('error', 'File not found!');
 }
-
+public function index(){
+    $files = Storage::files('public');
+    $pdfFiles = array_filter($files, function ($file) {
+        return str_ends_with($file, '.pdf');
+    });
+    $pdfFiles = array_map(function ($file) {
+        return basename($file);
+    }, $pdfFiles);
+    return view('catfacts', $pdfFiles);
+}
 }
 
 
