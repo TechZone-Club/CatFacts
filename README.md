@@ -11,7 +11,6 @@ Dự án này yêu cầu tạo một ứng dụng Laravel để xuất file PDF 
 ## **Yêu cầu dự án**
 
 ### 1. **Quản lý mã nguồn**
-- Repo dự án sẽ do người quản lý tạo và chia sẻ quyền cho các thành viên.
 - Mỗi thành viên cần:
   - Tạo **nhánh riêng** để phát triển.
   - Commit các thay đổi lên nhánh của mình một cách thường xuyên.
