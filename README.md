@@ -49,12 +49,10 @@ Dự án này yêu cầu tạo một ứng dụng Laravel để xuất file PDF 
 ## **Quy trình làm việc nhóm**
 1. Mỗi thành viên làm việc trên nhánh riêng của mình.
 2. Commit thay đổi thường xuyên với các thông điệp ý nghĩa.
-3. Gửi Pull Request để merge nhánh vào nhánh chính (main/master).
-4. Đảm bảo commit cuối cùng chứa từ khóa **"Finished"**.
+3. Đảm bảo commit cuối cùng chứa từ khóa **"Finished"**.
 
 ---
 
 ## **Ghi chú bổ sung**
 - Để tạo file PDF, bạn có thể lựa chọn: [Dompdf](https://github.com/dompdf/dompdf)
 - Tuân thủ các thực hành tốt nhất trong viết mã và tài liệu.
-
