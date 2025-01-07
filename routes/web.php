@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-
+use App\Http\Controllers\CatFactController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -13,6 +13,14 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+
 Route::get('/', function () {
-    return view('welcome');
+    return view('welcome'); // Trang chính để nhập số lượng sự thật về mèo
 });
+
+
+
+Route::get('/pdf/list', [CatFactController::class, 'listPdfs'])->name('pdf.list');
+Route::post('/pdf/generate', [CatFactController::class, 'generatePdf'])->name('pdf.generate');
+Route::get('/pdf/download/{fileName}', [CatFactController::class, 'downloadPdf'])->name('pdf.download');
+Route::delete('/pdf/delete/{fileName}', [CatFactController::class, 'deletePdf'])->name('pdf.delete');
