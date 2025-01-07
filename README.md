@@ -4,7 +4,7 @@
 
 ## **Tổng quan dự án**
 
-Dự án này yêu cầu tạo một ứng dụng Laravel để xuất file PDF chứa các sự thật thú vị về mèo. Mục tiêu là thể hiện kỹ năng phát triển backend bằng Laravel và quản lý quy trình làm việc cộng tác.
+Dự án này yêu cầu tạo một ứng dụng Laravel để xuất file PDF chứa các sự thật thú vị về mèo. Mục tiêu là thể hiện kỹ năng phát triển backend bằng Laravel với API Get cơ bản và quản lý quy trình làm việc cộng tác.
 
 ---
 
