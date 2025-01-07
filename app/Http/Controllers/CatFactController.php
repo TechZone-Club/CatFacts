@@ -65,7 +65,7 @@ public function index(){
     $pdfFiles = array_map(function ($file) {
         return basename($file);
     }, $pdfFiles);
-    return view('catfacts', $pdfFiles);
+    return view('catfacts', ["pdfFiles"=>$pdfFiles]);
 }
 }
 
