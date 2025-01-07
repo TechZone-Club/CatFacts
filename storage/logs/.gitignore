@@ -1,2 +1,40 @@
-*
-!.gitignore
+# Laravel specific
+/vendor
+/node_modules
+/public/storage
+/storage/*.key
+/.env
+/.env.*
+/Homestead.yaml
+/Homestead.json
+/.vagrant
+/vendor/*
+/.idea
+/.phpunit.result.cache
+
+# OS generated files
+.DS_Store
+Thumbs.db
+
+# Composer
+composer.lock
+
+# Laravel 9 specific
+/public/hot
+/public/mix-manifest.json
+
+# Log files
+*.log
+
+# JetBrains PhpStorm
+.idea/
+
+# Nginx logs
+/log/
+
+# Backup files
+*.bak
+*.swp
+
+# Temporary files
+*.tmp
