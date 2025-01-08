@@ -25,7 +25,10 @@
                 <li class="list-group-item d-flex justify-content-between align-items-center">
                     <a href="{{ url('pdfs/' . $file) }}" download class="text-decoration-none text-dark">{{ $file }}</a>
                     <form action="{{ route('cat.delete_pdf', ['file' => $file]) }}" method="POST" onsubmit="return confirm('Are you sure you want to delete this file?')">
-                        @csrf
+                    <a href="{{ url('pdfs/' . $file) }}" target="_blank" class="btn btn-info btn-sm me-2">View</a>
+                        <!-- Nút Download -->
+                        <a href="{{ url('pdfs/' . $file) }}" download class="btn btn-success btn-sm me-2">Download</a>   
+                    @csrf
                         @method('DELETE')
                         <button type="submit" class="btn btn-danger btn-sm">Delete</button>
                     </form>
