@@ -50,14 +50,16 @@ class CatFactsController extends Controller
 
     public function deletePdf($filename)
     {
-        $filePath = storage_path('app/public/pdfs/' . $filename);
-
-        if (file_exists($filePath)) {
-            unlink($filePath);
-            return redirect()->route('catfact.list')->with('success', 'File đã được xóa thành công!');
+        $filePath = storage_path('app/public/' . $filename);
+        // Kiểm tra xem file có tồn tại không
+        if (File::exists($filePath)) {
+            // Xóa file
+            File::delete($filePath);
+            return redirect()->route('list-pdfs')->with('success', 'File đã được xóa thành công!');
+        } else {
+            return redirect()->route('list-pdfs')->with('error', 'File không tồn tại!');
         }
-
-        return redirect()->route('catfact.list')->with('error', 'File không tồn tại!');
     }
+    
 }
     

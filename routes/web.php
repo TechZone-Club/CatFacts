@@ -25,7 +25,7 @@ Route::get('/catfact/list', [CatFactsController::class, 'listPdf'])->name('catfa
 Route::get('/catfact/download/{filename}', [CatFactsController::class, 'downloadPdf'])->name('catfact.download');
 Route::delete('/catfact/delete/{filename}', [CatFactsController::class, 'deletePdf'])->name('catfact.delete');
 Route::get('/pdfs', [CatFactsController::class, 'listPDFs'])->name('list-pdfs');
-Route::get('/pdfs', [CatFactsController::class, 'listPDFs'])->name('list-pdfs');
+Route::delete('/pdfs/{fileName}', [CatFactsController::class, 'deletePDF'])->name('delete-pdf');
 Route::post('/generate-pdf', [CatFactsController::class, 'generatePDF'])->name('generate-pdf');
 Route::get('/', function () {
     return view('index');
