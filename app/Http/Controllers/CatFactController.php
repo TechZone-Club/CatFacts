@@ -88,3 +88,36 @@ class CatFactController extends Controller
     }
 
 }
+namespace App\Http\Controllers;
+
+use Illuminate\Http\Request;
+use Barryvdh\DomPDF\Facade\Pdf;
+use Illuminate\Support\Facades\Http;
+
+class CatFactsController extends Controller
+{
+    public function generatePDF(Request $request)
+    {
+        $factsCount = $request->input('facts_count');
+        $response = Http::get("https://catfact.ninja/facts", ['limit' => $factsCount]);
+        $facts = $response->json()['data'];
+
+        $pdf = Pdf::loadView('pdf.cat_facts', compact('facts'));
+        $fileName = 'cat_facts_' . time() . '.pdf';
+        $path = storage_path("app/public/{$fileName}");
+       
+
+        $pdf->save($path);
+         $pdf->save(storage_path("app/public/{$fileName}"));
+         
+        return response()->download($path, $fileName);
+        
+    }
+    public function listPDFs()
+    {
+    $files = array_reverse(glob(storage_path('app/public/*.pdf')));
+    return view('pdf.list', compact('files'));
+    }
+
+}
+    
