@@ -30,3 +30,5 @@ Route::get('/pdf-list', [CatFactController::class, 'listPdfFiles'])->name('cat.l
 
 // Route xóa file PDF
 Route::delete('/delete-pdf/{file}', [CatFactController::class, 'deletePdf'])->name('cat.delete_pdf');
+
+

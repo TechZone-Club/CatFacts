@@ -26,7 +26,7 @@ class CatFactController extends Controller
 
         // Kiểm tra xem có sự thật về mèo không
         if (!isset($data['data']) || empty($data['data'])) {
-            return response()->json(['message' => 'No cat facts found'], 404);
+            return redirect()->back()->with('error', 'No cat facts found');
         }
 
         // Tạo HTML từ dữ liệu sự thật về mèo
@@ -47,42 +47,49 @@ class CatFactController extends Controller
         // Lưu file PDF vào thư mục public
         $pdf->save($path);
 
-        // Trả về URL để tải file PDF
+        // Chuyển hướng đến danh sách file PDF
         return redirect()->route('cat.list_pdfs')->with('message', 'PDF created successfully');
     }
 
-    // Hiển thị danh sách các file PDF đã tạo
-    public function listPdfFiles()
+    // Hiển thị danh sách các file PDF và hỗ trợ tìm kiếm
+    public function listPdfFiles(Request $request)
     {
-        // Lấy danh sách các file PDF từ thư mục public/pdfs
-        $files = scandir(public_path('pdfs'));
+        $search = $request->query('search', ''); // Lấy từ khóa tìm kiếm từ query string
+        $pdfPath = public_path('pdfs');
 
-        // Lọc ra chỉ các file PDF
-        $pdfFiles = array_filter($files, function ($file) {
-            return strpos($file, '.pdf') !== false;
+        // Lấy danh sách tất cả các file
+        $allFiles = scandir($pdfPath);
+
+        // Lọc chỉ các file PDF và theo từ khóa tìm kiếm
+        $pdfFiles = array_filter($allFiles, function ($file) use ($search) {
+            return str_contains(strtolower($file), strtolower($search)) && pathinfo($file, PATHINFO_EXTENSION) === 'pdf';
         });
 
-        // Sắp xếp danh sách file PDF theo thứ tự giảm dần (mới nhất trước)
-        usort($pdfFiles, function ($a, $b) {
-            return filemtime(public_path('pdfs/' . $b)) - filemtime(public_path('pdfs/' . $a));
+        // Sắp xếp danh sách file PDF theo thứ tự mới nhất trước
+        usort($pdfFiles, function ($a, $b) use ($pdfPath) {
+            return filemtime($pdfPath . '/' . $b) - filemtime($pdfPath . '/' . $a);
         });
 
-        return view('pdf_list', ['pdfFiles' => $pdfFiles]);
+        return view('pdf_list', ['pdfFiles' => $pdfFiles, 'search' => $search]);
     }
 
     // Xóa file PDF
     public function deletePdf($file)
-    {
-        $filePath = public_path('pdfs/' . $file);
+{
+    // Đường dẫn đầy đủ đến file PDF
+    $filePath = public_path('pdfs/' . $file);
 
-        // Kiểm tra nếu file tồn tại
-        if (File::exists($filePath)) {
-            // Xóa file
-            File::delete($filePath);
+    // Kiểm tra nếu file tồn tại
+    if (File::exists($filePath)) {
+        // Xóa file
+        File::delete($filePath);
 
-            return redirect()->route('cat.list_pdfs')->with('message', 'PDF deleted successfully');
-        }
-
-        return redirect()->route('cat.list_pdfs')->with('error', 'File not found');
+        // Chuyển hướng với thông báo thành công
+        return redirect()->route('cat.list_pdfs')->with('message', 'PDF deleted successfully');
     }
+
+    // Nếu file không tồn tại, chuyển hướng với thông báo lỗi
+    return redirect()->route('cat.list_pdfs')->with('error', 'File not found');
+}
+
 }
