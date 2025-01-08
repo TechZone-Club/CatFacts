@@ -1,8 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\CatFactController;
-
+use App\Http\Controllers\CatFactsController;
 
 /*
 |--------------------------------------------------------------------------
@@ -20,17 +19,19 @@ Route::get('/', function () {
 });
 
 
-Route::get('/catfact', [CatFactController::class, 'showForm'])->name('catfact.form');
-Route::post('/catfact/generate', [CatFactController::class, 'generatePdf'])->name('catfact.generate');
-Route::get('/catfact/list', [CatFactController::class, 'listPdf'])->name('catfact.list');
-Route::get('/catfact/download/{filename}', [CatFactController::class, 'downloadPdf'])->name('catfact.download');
-Route::delete('/catfact/delete/{filename}', [CatFactController::class, 'deletePdf'])->name('catfact.delete');
+Route::get('/catfact', [CatFactsController::class, 'showForm'])->name('catfact.form');
+Route::post('/catfact/generate', [CatFactsController::class, 'generatePdf'])->name('catfact.generate');
+Route::get('/catfact/list', [CatFactsController::class, 'listPdf'])->name('catfact.list');
+Route::get('/catfact/download/{filename}', [CatFactsController::class, 'downloadPdf'])->name('catfact.download');
+Route::delete('/catfact/delete/{filename}', [CatFactsController::class, 'deletePdf'])->name('catfact.delete');
 Route::get('/pdfs', [CatFactsController::class, 'listPDFs'])->name('list-pdfs');
-
-use App\Http\Controllers\CatFactsController;
-
+Route::get('/pdfs', [CatFactsController::class, 'listPDFs'])->name('list-pdfs');
+Route::post('/generate-pdf', [CatFactsController::class, 'generatePDF'])->name('generate-pdf');
 Route::get('/', function () {
     return view('index');
 });
 
-Route::post('/generate-pdf', [CatFactsController::class, 'generatePDF'])->name('generate-pdf');
+
+
+
+
